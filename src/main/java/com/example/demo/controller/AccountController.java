@@ -1,0 +1,33 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.model.Account;
+import com.example.demo.service.AccountService;
+
+@RestController
+@RequestMapping("/account")
+public class AccountController {
+
+    @Autowired
+    private AccountService service;
+
+    @PostMapping("/create")
+    public Account create(@RequestParam int id,
+                          @RequestParam String name,
+                          @RequestParam double balance) {
+        return service.create(id, name, balance);
+    }
+
+    @PostMapping("/deposit")
+    public Account deposit(@RequestParam int id,
+                           @RequestParam double amount) {
+        return service.deposit(id, amount);
+    }
+
+    @GetMapping("/balance/{id}")
+    public double balance(@PathVariable int id) {
+        return service.getBalance(id);
+    }
+}
