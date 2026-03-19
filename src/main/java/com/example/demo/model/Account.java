@@ -1,16 +1,3 @@
-// package com.example.demo.model;
-
-// public class Account {
-//     public int id;
-//     public String name;
-//     public double balance;
-
-//     public Account(int id, String name, double balance) {
-//         this.id = id;
-//         this.name = name;
-//         this.balance = balance;
-//     }
-// }
 package com.example.demo.model;
 
 import jakarta.persistence.*;
@@ -20,8 +7,21 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
-    public String name;
-    public double balance;
+    private String name;
+    private double balance;
+
+    // 🔥 REQUIRED (default constructor)
+    public Account() {}
+
+    // 🔹 getters & setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public double getBalance() { return balance; }
+    public void setBalance(double balance) { this.balance = balance; }
 }
