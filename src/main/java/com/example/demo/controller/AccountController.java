@@ -9,31 +9,25 @@ import com.example.demo.service.AccountService;
 @RestController
 @RequestMapping("/account")
 public class AccountController {
-
     @Autowired
     private AccountService service;
-
     @PostMapping("/create")
-    public Account create(@RequestParam int id,
-            @RequestParam String name,
-            @RequestParam double balance) {
-        return service.create(id, name, balance);
+    public Account create(@RequestParam String name,
+                          @RequestParam double balance) {
+        return service.create(name, balance);
     }
-
     @PostMapping("/deposit")
     public Account deposit(@RequestParam int id,
-            @RequestParam double amount) {
+                           @RequestParam double amount) {
         return service.deposit(id, amount);
     }
-
-    @GetMapping("/balance/{id}")
-    public double balance(@PathVariable int id) {
-        return service.getBalance(id);
-    }
-
     @PostMapping("/withdraw")
     public Account withdraw(@RequestParam int id,
-            @RequestParam double amount) {
+                            @RequestParam double amount) {
         return service.withdraw(id, amount);
+    }
+    @GetMapping("/balance/{id}")
+    public double getBalance(@PathVariable int id) {
+        return service.getBalance(id);
     }
 }
