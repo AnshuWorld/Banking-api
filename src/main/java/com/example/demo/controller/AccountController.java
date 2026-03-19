@@ -12,9 +12,8 @@ public class AccountController {
     @Autowired
     private AccountService service;
     @PostMapping("/create")
-    public Account create(@RequestParam String name,
-                          @RequestParam double balance) {
-        return service.create(name, balance);
+    public Account create(@RequestBody Account acc) {
+        return service.create(acc.name, acc.balance);
     }
     @PostMapping("/deposit")
     public Account deposit(@RequestParam int id,
