@@ -15,19 +15,25 @@ public class AccountController {
 
     @PostMapping("/create")
     public Account create(@RequestParam int id,
-                          @RequestParam String name,
-                          @RequestParam double balance) {
+            @RequestParam String name,
+            @RequestParam double balance) {
         return service.create(id, name, balance);
     }
 
     @PostMapping("/deposit")
     public Account deposit(@RequestParam int id,
-                           @RequestParam double amount) {
+            @RequestParam double amount) {
         return service.deposit(id, amount);
     }
 
     @GetMapping("/balance/{id}")
     public double balance(@PathVariable int id) {
         return service.getBalance(id);
+    }
+
+    @PostMapping("/withdraw")
+    public Account withdraw(@RequestParam int id,
+            @RequestParam double amount) {
+        return service.withdraw(id, amount);
     }
 }

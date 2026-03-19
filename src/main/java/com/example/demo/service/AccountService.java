@@ -19,7 +19,8 @@ public class AccountService {
 
     public Account deposit(int id, double amount) {
         Account acc = map.get(id);
-        if (acc == null) return null;
+        if (acc == null)
+            return null;
 
         acc.balance += amount;
         return acc;
@@ -28,5 +29,21 @@ public class AccountService {
     public double getBalance(int id) {
         Account acc = map.get(id);
         return acc == null ? -1 : acc.balance;
+    }
+
+    public Account withdraw(int id, double amount) {
+        Account acc = map.get(id);
+
+        if (acc == null) {
+            return null;
+        }
+
+        if (acc.balance < amount) {
+            System.out.println("Insufficient Balance");
+            return acc;
+        }
+
+        acc.balance -= amount;
+        return acc;
     }
 }
